@@ -41,3 +41,15 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Route
+    uniqueID: 1390691267
+    locked: 0
+  - name: Monster
+    uniqueID: 463453821
+    locked: 0
+  - name: Turret
+    uniqueID: 522533837
+    locked: 0
+  - name: I UI
+    uniqueID: 4012331937
+    locked: 0
