@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class BuildManager : MonoBehaviour
 {
-    [Header("Å¸¿ö")]
+    [Header("íƒ€ì›Œ")]
     [SerializeField] private Tower[] towers;
 
     private int selectedTower = 0;
@@ -23,10 +23,6 @@ public class BuildManager : MonoBehaviour
             return instance;
         }
     }
-
-
-
-
 
     public Tower GetSelectedTower()
     {
