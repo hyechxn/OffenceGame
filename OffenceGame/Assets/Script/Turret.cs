@@ -33,6 +33,8 @@ public abstract class Turret : MonoBehaviour
 
     protected void Init()
     {
+        //bpsBase = bps; 초당 공격횟수 설정 필요!!
+        //targetingRangeBase = targetingRange; 사거리 설정 필요!!
         turretRotation = transform.GetChild(0);
     }
 
