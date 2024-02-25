@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigid: {fileID: 2939941854203729530}
-  bulletSpeed: 15
+  bulletSpeed: 40
   bulletDamage: 1
   target: {fileID: 0}
 --- !u!50 &2939941854203729530
