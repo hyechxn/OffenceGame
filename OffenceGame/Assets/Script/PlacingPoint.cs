@@ -5,14 +5,14 @@ using UnityEngine.EventSystems;
 
 public class PlacingPoint : MonoBehaviour
 {
-    [Header("ƒƒ∆˜≥Õ∆Æ")]
+    [Header("Ïª¥Ìè¨ÎÑåÌä∏")]
     private SpriteRenderer spriteRenderer;
     [SerializeField] private Color selectColor;
 
     private GameObject canvas;
 
     private Color baseColor;
-    private GameObject towerObj;
+    [SerializeField] GameObject placedTurret;
 
     void Start()
     {
@@ -37,12 +37,12 @@ public class PlacingPoint : MonoBehaviour
 
     public void OnMouseDown()
     {
-        if (towerObj == null)
+        if (placedTurret == null)
         {
             canvas.SetActive(!canvas.activeSelf);
             return;
         }
-        //towerObj.transform.GetChild(0);
-        
+        //placedTurret.transform.GetChild(0);
+
     }
 }

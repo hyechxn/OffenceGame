@@ -15,9 +15,9 @@ public abstract class Turret : MonoBehaviour
 
 
     //속성 변수
-    [SerializeField] private float targetingRange;
-    private float rotationSpeed = 200;
-    [SerializeField] private float bps; // Bullets Per Second
+    [SerializeField] protected float targetingRange;
+    protected float rotationSpeed = 200;
+    [SerializeField] protected float bps; // Bullets Per Second
 
     //베이스 속성 변수
     private float targetingRangeBase;
@@ -31,11 +31,10 @@ public abstract class Turret : MonoBehaviour
         Init();
     }
 
-    protected void Init()
+    protected virtual void Init()
     {
-        //bpsBase = bps; 초당 공격횟수 설정 필요!!
-        //targetingRangeBase = targetingRange; 사거리 설정 필요!!
         turretRotation = transform.GetChild(0);
+        enemyMask = LayerMask.GetMask("Enemy");
     }
 
     private void Update()
