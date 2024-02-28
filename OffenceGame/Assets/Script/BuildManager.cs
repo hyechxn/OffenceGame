@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class BuildManager : MonoBehaviour
 {
-    private static BuildManager instance;
+    public static BuildManager instance;
     private void Awake()
     {
         instance = this;
@@ -14,21 +14,21 @@ public class BuildManager : MonoBehaviour
     }
 
 
-    [Header("타워")]
-    [SerializeField] private Tower[] towers;
-
-    //상점 패널
-    private GameObject canvas;
-
-    private int selectedTower = 0;
-
-    public Tower GetSelectedTower()
-    {
-        return towers[selectedTower];
-    }
+    public Tower[] towers;
+    public Transform selectedPoint;
+    public GameObject canvas;
 
     public void SetSelectedTower(int selectedTower)
     {
-        this.selectedTower = selectedTower;
+        if (LevelManager.instance.GetCoin() > towers[selectedTower].cost)
+        {
+            LevelManager.instance.SpendCoin(towers[selectedTower].cost);
+            selectedPoint.GetComponent<PlacingPoint>().placedTurret =  Instantiate(towers[selectedTower].towerPrefab, selectedPoint.position + new Vector3(0f, 0.1f), Quaternion.identity);
+            transform.GetChild(0).GetChild(0).GetComponent<Shop>().ToggleShop();
+        }
+        else
+        {
+            Debug.Log("이잉");
+        }
     }
 }

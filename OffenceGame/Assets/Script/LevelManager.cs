@@ -10,14 +10,24 @@ public class LevelManager : MonoBehaviour
     public int patternNum;
     private int patternCount = 0;
 
-    private int coin;
+    private bool isGaming;
+
+    private int coin = 100;
     private void Awake()
     {
         instance = this;
-        StartCoroutine(SpawnEnemy());
     }
 
-    IEnumerator SpawnEnemy()
+    public void StartGame()
+    {
+        if (!isGaming)
+        {
+            StartCoroutine(SpawnEnemy());
+            isGaming = true;
+        }
+    }
+
+    private IEnumerator SpawnEnemy()
     {
         yield return new WaitForSeconds(3f);
         for (int i = 0; i < enemies.Length; i++)
@@ -28,6 +38,8 @@ public class LevelManager : MonoBehaviour
         patternCount++;
         if (patternCount < patternNum)
             StartCoroutine(SpawnEnemy());
+        else
+            isGaming = false;
     }
 
     public int GetCoin()

@@ -10,7 +10,7 @@ public class TestTurret : Turret
     {
         base.Init();
         bps = 1.5f;
-        targetingRange = 5;
+        targetingRange = 3;
     }
 
     protected override void Attack()
@@ -21,19 +21,18 @@ public class TestTurret : Turret
     }
     public void OnMouseEnter()
     {
-        spriteRenderer.color = selectColor;
+        turretRangeObj.localScale = new Vector3(3.65f * targetingRange, 4.4f * targetingRange, 1f);
+        turretRangeObj.gameObject.SetActive(true);
+
     }
 
 
     public void OnMouseExit()
     {
-        spriteRenderer.color = baseColor;
+        turretRangeObj.gameObject.SetActive(false);
     }
     public void OnMouseDown()
     {
-        Debug.Log("456");
-        turretRangeObj.localScale = new Vector3(3.3f * targetingRange, 4f * targetingRange, 1f);
-        turretRangeObj.gameObject.SetActive(!turretRangeObj.gameObject.activeSelf);
-        Debug.Log("123");
+
     }
 }

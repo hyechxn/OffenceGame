@@ -9,16 +9,16 @@ public class PlacingPoint : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     [SerializeField] private Color selectColor;
 
-    private GameObject canvas;
-
     private Color baseColor;
-    [SerializeField] GameObject placedTurret;
+    [SerializeField] public GameObject placedTurret;
+
+    Shop shop;
 
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         baseColor = spriteRenderer.color;
-        canvas = transform.GetChild(0).gameObject; 
+        shop = BuildManager.instance.transform.GetChild(0).GetChild(0).GetComponent<Shop>();
     }
 
 
@@ -39,9 +39,15 @@ public class PlacingPoint : MonoBehaviour
     {
         if (placedTurret == null)
         {
-            canvas.SetActive(!canvas.activeSelf);
-            return;
+            Transform recentPoint = BuildManager.instance.selectedPoint;
+            BuildManager.instance.selectedPoint = transform;
+            if (recentPoint == BuildManager.instance.selectedPoint)
+            {
+                shop.ToggleShop();
+                return;
+            }
+            else if(!shop.isMenuOpen)
+                shop.ToggleShop();
         }
-        //placedTurret.transform.GetChild(0);
     }
 }
