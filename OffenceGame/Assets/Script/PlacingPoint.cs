@@ -43,6 +43,5 @@ public class PlacingPoint : MonoBehaviour
             return;
         }
         //placedTurret.transform.GetChild(0);
-
     }
 }

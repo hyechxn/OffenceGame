@@ -6,24 +6,21 @@ using UnityEngine.SceneManagement;
 
 public class BuildManager : MonoBehaviour
 {
+    private static BuildManager instance;
+    private void Awake()
+    {
+        instance = this;
+        canvas = instance.transform.GetChild(0).gameObject;
+    }
+
+
     [Header("타워")]
     [SerializeField] private Tower[] towers;
 
+    //상점 패널
+    private GameObject canvas;
+
     private int selectedTower = 0;
-
-
-    private static BuildManager instance;
-    public static BuildManager Instance
-    {
-        get
-        {
-            if (instance == null)
-            {
-                instance = new BuildManager();
-            }
-            return instance;
-        }
-    }
 
     public Tower GetSelectedTower()
     {

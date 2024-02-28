@@ -26,7 +26,6 @@ public class Enemy : MonoBehaviour
 
     void Init()
     {
-        moveSpeed = 3.5f;
         target = LevelManager.instance.path[pathIndex];
         baseSpeed = moveSpeed;
         rigid = GetComponent<Rigidbody2D>();
@@ -37,7 +36,8 @@ public class Enemy : MonoBehaviour
         if (Vector2.Distance(transform.position, target.position) <= 0.1f)
         {
             pathIndex++;
-
+            if (pathIndex >= LevelManager.instance.path.Length)
+                return;
             target = LevelManager.instance.path[pathIndex];
         }
     }

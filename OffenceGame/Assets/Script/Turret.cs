@@ -9,12 +9,16 @@ public abstract class Turret : MonoBehaviour
 {
     //참조
     Transform turretRotation;
+    protected Transform turretRangeObj;
     [SerializeField] LayerMask enemyMask;
     [SerializeField] protected GameObject bulletPrefab;
     [SerializeField] protected Transform firingPoint;
+    protected SpriteRenderer spriteRenderer;
 
+    [SerializeField] protected Color selectColor;
 
     //속성 변수
+    protected Color baseColor;
     [SerializeField] protected float targetingRange;
     protected float rotationSpeed = 200;
     [SerializeField] protected float bps; // Bullets Per Second
@@ -33,7 +37,10 @@ public abstract class Turret : MonoBehaviour
 
     protected virtual void Init()
     {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        baseColor = spriteRenderer.color;
         turretRotation = transform.GetChild(0);
+        turretRangeObj = transform.GetChild(1);
         enemyMask = LayerMask.GetMask("Enemy");
     }
 
@@ -80,7 +87,7 @@ public abstract class Turret : MonoBehaviour
 
     private void RotateTowardsTarget()
     {
-        float angle = Mathf.Atan2(target.position.y- transform.position.y, 
+        float angle = Mathf.Atan2(target.position.y - transform.position.y,
             target.position.x - transform.position.x) * Mathf.Rad2Deg - 90f;
 
         Quaternion targetRotation = Quaternion.Euler(0f, 0f, angle);
