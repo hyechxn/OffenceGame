@@ -23,7 +23,6 @@ public class TestTurret : Turret
     {
         turretRangeObj.localScale = new Vector3(3.65f * targetingRange, 4.4f * targetingRange, 1f);
         turretRangeObj.gameObject.SetActive(true);
-
     }
 
 
